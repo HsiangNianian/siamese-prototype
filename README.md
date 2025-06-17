@@ -73,12 +73,12 @@ sequenceDiagram
 
 ## Key Features
 
--   **Fully Asynchronous**: Built on `asyncio` to handle I/O-bound tasks without blocking.
--   **Structured Logging**: Integrated with `loguru` for powerful and configurable tracing and debugging.
--   **External Configuration**: Load facts and rules from human-readable YAML files.
--   **Extensible Async Built-ins**: Easily write custom Python `async` functions to extend the engine's logic (e.g., for database access, API calls).
--   **Robust and Thread-Safe**: The query resolution process is stateless, allowing for safe concurrent querying from multiple async tasks.
--   **Control & Safety**: Prevents infinite loops with configurable search depth and limits the number of solutions.
+-   😎**Fully Asynchronous**: Built on `asyncio` to handle I/O-bound tasks without blocking.
+-   👀**Structured Logging**: Integrated with `loguru` for powerful and configurable tracing and debugging.
+-   ⚙️**External Configuration**: Load facts and rules from human-readable YAML files.
+-   🪜**Extensible Async Built-ins**: Easily write custom Python `async` functions to extend the engine's logic (e.g., for database access, API calls).
+-   🚀**Robust and Thread-Safe**: The query resolution process is stateless, allowing for safe concurrent querying from multiple async tasks.
+-   🧰**Control & Safety**: Prevents infinite loops with configurable search depth and limits the number of solutions.
 
 ## Installation
 
@@ -107,7 +107,7 @@ uv sync
 
     ```python
     import asyncio
-    from py_prolog import RuleEngine
+    from siamese import RuleEngine
 
     async def main():
         # Initialize the engine
@@ -175,36 +175,6 @@ rules:
       - [parent, '?A', '?P']
       - [ancestor, '?P', '?D']
 ```
-
-## API Reference
-
-### RuleEngine
-
-The main class for interacting with the rule engine.
-
-#### Methods
-
-- `__init__(builtins=None)`: Initialize the engine with optional custom built-ins
-- `configure_logging(level="INFO", sink=sys.stderr)`: Configure logging output
-- `load_from_file(filepath)`: Load knowledge base from YAML file
-- `add_fact(name, *args)`: Add a fact to the knowledge base
-- `add_rule(head_tuple, body_tuples)`: Add a rule to the knowledge base
-- `query(name, *args, max_solutions=-1, max_depth=25)`: Query the knowledge base asynchronously
-- `query_one(name, *args, **kwargs)`: Get the first solution or None
-- `exists(name, *args, **kwargs)`: Check if at least one solution exists
-
-### Core Types
-
-- `Variable(name)`: Represents a Prolog variable (must start with '?')
-- `Term(name, args)`: Represents a Prolog term
-- `Rule(head, body)`: Represents a Prolog rule
-
-## Examples
-
-See the `examples/` directory for complete working examples:
-
-- `knowledge.yaml`: Sample knowledge base
-- `full_demo.py`: Comprehensive demonstration of all features
 
 ## License
 
