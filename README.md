@@ -1,6 +1,6 @@
-# Siamese-py: PyProlog Engine v2.0: Production-Ready Async Rule Engine
+# Siamese Prototype v2.0: Production-Ready Async Rule Engine
 
-Siamese-py is a high-performance, asynchronous backward-chaining rule engine in Python. It is designed for production environments where logic-based decisions may need to interact with external, non-blocking I/O resources like web APIs or databases.
+siamese-prototypeis a high-performance, asynchronous backward-chaining rule engine in Python. It is designed for production environments where logic-based decisions may need to interact with external, non-blocking I/O resources like web APIs or databases.
 
 ```mermaid
 sequenceDiagram

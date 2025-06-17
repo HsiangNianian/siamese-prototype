@@ -1,5 +1,5 @@
 """
-PyProlog v2.0: A production-ready, asynchronous rule engine.
+siamese-prototype v2.0: A production-ready, asynchronous rule engine.
 """
 from .engine import RuleEngine
 from .core import Variable, Term, PrologError, UnificationError
