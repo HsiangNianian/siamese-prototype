@@ -178,35 +178,35 @@ rules:
 
 ## Documentation
 
-📚 **完整文档**: 查看 [docs/](docs/) 目录获取详细文档
+📚 **Complete Documentation**: View the [docs/](docs/) directory for detailed documentation
 
-### 构建文档
+### Building Documentation
 
 ```bash
-# 安装文档依赖
+# Install documentation dependencies
 uv sync --group docs
 
-# 构建文档
+# Build documentation
 cd docs && make html
 
-# 启动本地服务器查看文档
+# Start local server to view documentation
 cd docs && make serve
 ```
 
-或者使用便捷脚本：
+Or use the convenient script:
 
 ```bash
 ./build_docs.sh
 ```
 
-### 文档结构
+### Documentation Structure
 
-- 📖 [安装指南](docs/installation.rst) - 详细的安装说明
-- 🚀 [快速开始](docs/quickstart.rst) - 快速上手教程
-- 📚 [用户指南](docs/user_guide/) - 详细的使用说明
-- 🔧 [API 参考](docs/api/) - 完整的 API 文档
-- 💡 [示例](docs/examples/) - 各种使用示例
-- 🤝 [贡献指南](docs/contributing.rst) - 如何贡献代码
+- 📖 [Installation Guide](docs/installation.rst) - Detailed installation instructions
+- 🚀 [Quick Start](docs/quickstart.rst) - Quick start tutorial
+- 📚 [User Guide](docs/user_guide/) - Detailed usage instructions
+- 🔧 [API Reference](docs/api/) - Complete API documentation
+- 💡 [Examples](docs/examples/) - Various usage examples
+- 🤝 [Contributing Guide](docs/contributing.rst) - How to contribute code
 
 ## Development
 
