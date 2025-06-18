@@ -2,15 +2,25 @@ import pytest
 import pytest_asyncio
 from siamese import RuleEngine
 from loguru import logger
+from pathlib import Path
+
+def find_kb(filename):
+    here = Path(__file__).parent
+    for candidate in [here, here.parent, here.parent.parent]:
+        kb = candidate / filename
+        if kb.exists():
+            return str(kb)
+    raise FileNotFoundError(f"Knowledge base file '{filename}' not found.")
 
 @pytest_asyncio.fixture
 async def production_engine():
     """Create a rule engine with production knowledge base."""
     engine = RuleEngine()
     engine.configure_logging(level="INFO")
+    kb_path = find_kb("production_knowledge.yaml")
     
     try:
-        engine.load_from_file("tests/production_knowledge.yaml")
+        engine.load_from_file(kb_path)
         logger.success("Production knowledge base loaded successfully")
         return engine
     except Exception as e:

@@ -176,6 +176,54 @@ rules:
       - [ancestor, '?P', '?D']
 ```
 
+## Documentation
+
+📚 **完整文档**: 查看 [docs/](docs/) 目录获取详细文档
+
+### 构建文档
+
+```bash
+# 安装文档依赖
+uv sync --group docs
+
+# 构建文档
+cd docs && make html
+
+# 启动本地服务器查看文档
+cd docs && make serve
+```
+
+或者使用便捷脚本：
+
+```bash
+./build_docs.sh
+```
+
+### 文档结构
+
+- 📖 [安装指南](docs/installation.rst) - 详细的安装说明
+- 🚀 [快速开始](docs/quickstart.rst) - 快速上手教程
+- 📚 [用户指南](docs/user_guide/) - 详细的使用说明
+- 🔧 [API 参考](docs/api/) - 完整的 API 文档
+- 💡 [示例](docs/examples/) - 各种使用示例
+- 🤝 [贡献指南](docs/contributing.rst) - 如何贡献代码
+
+## Development
+
+### Running Tests
+
+```bash
+uv run pytest
+```
+
+### Code Quality
+
+```bash
+uv run mypy src/
+uv run black src/ tests/
+uv run isort src/ tests/
+```
+
 ## License
 
 MIT License - see LICENSE file for details. 

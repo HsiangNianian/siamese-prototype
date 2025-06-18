@@ -1,7 +1,10 @@
 import sys
-import yaml
+from pathlib import Path
 from typing import Any, List, Tuple, AsyncGenerator, Dict, Optional
+
+import yaml
 from loguru import logger
+
 from .core import Variable, Term, Rule, TraceEvent, PrologError
 from .knowledge import KnowledgeBase
 from .resolver import Resolver
@@ -130,4 +133,13 @@ class RuleEngine:
             "FAIL": (logger.warning, f"FAIL: {indent}{goal_str}"),
         }
         log_func, msg = log_map.get(event.type, (logger.info, "TRACE: " + str(event)))
-        log_func(msg) 
+        log_func(msg)
+
+    def load_kb_auto(self, filename: str):
+        """Load a knowledge base file by searching current, parent, and grandparent directories."""
+        here = Path.cwd()
+        for candidate in [here, here.parent, here.parent.parent]:
+            kb = candidate / filename
+            if kb.exists():
+                return self.load_from_file(str(kb))
+        raise FileNotFoundError(f"Knowledge base file '{filename}' not found in current or parent directories.") 

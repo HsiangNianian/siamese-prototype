@@ -2,13 +2,23 @@ import pytest
 import pytest_asyncio
 from siamese import RuleEngine
 from loguru import logger
+from pathlib import Path
+
+def find_kb(filename):
+    here = Path(__file__).parent
+    for candidate in [here, here.parent, here.parent.parent]:
+        kb = candidate / filename
+        if kb.exists():
+            return str(kb)
+    raise FileNotFoundError(f"Knowledge base file '{filename}' not found.")
 
 @pytest_asyncio.fixture
 async def relationship_engine():
     """Create a rule engine with relationship knowledge base."""
     engine = RuleEngine()
     engine.configure_logging(level="INFO")
-    engine.load_from_file("tests/relationship_knowledge.yaml")
+    kb_path = find_kb("relationship_knowledge.yaml")
+    engine.load_from_file(kb_path)
     return engine
 
 @pytest.mark.asyncio
