@@ -193,12 +193,6 @@ cd docs && make html
 cd docs && make serve
 ```
 
-Or use the convenient script:
-
-```bash
-./build_docs.sh
-```
-
 ### Documentation Structure
 
 - 📖 [Installation Guide](docs/installation.rst) - Detailed installation instructions
