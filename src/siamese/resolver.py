@@ -26,7 +26,19 @@ class Resolver:
         return rename(term)
 
     def _rename_rule(self, rule: Rule) -> Rule:
-        return Rule(self._rename_term(rule.head), [self._rename_term(t) for t in rule.body])
+        self._rename_counter += 1
+        rename_map: dict[Variable, Variable] = {}
+        
+        def rename(t):
+            if isinstance(t, Variable):
+                if t not in rename_map:
+                    rename_map[t] = Variable(f"{t.name}_{self._rename_counter}")
+                return rename_map[t]
+            if isinstance(t, Term):
+                return Term(t.name, tuple(rename(arg) for arg in t.args))
+            return t
+        
+        return Rule(rename(rule.head), [rename(t) for t in rule.body])
 
     async def prove(self, goals: List[Goal], max_depth: int) -> AsyncIterator[Bindings | TraceEvent]:
         """Asynchronous, iterative-deepening solver using a stack."""
