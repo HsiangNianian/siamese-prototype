@@ -36,6 +36,7 @@ packages = ["src/siamese"]
 
 [dependency-groups]
 dev = [
+    "mypy>=1.16.1",
     "pytest>=8.4.1",
     "pytest-asyncio>=1.0.0",
 ]
@@ -49,4 +50,4 @@ docs = [
 
 [tool.sphinx]
 project = "Siamese Prototype"
-copyright = "2024, HsiangNianian"
+copyright = "2025, HsiangNianian"
